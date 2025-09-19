@@ -67,7 +67,7 @@ exports.updateReview = async (req, res, next) => {
 exports.deleteReview = async (req, res, next) => {
     try {
         const reviewId = req.params.id;
-        const review = await Review.findById(reviewId);
+        const review = await Review.findByIdAndDelete(reviewId);
 
         if (!review) {
             return res.status(404).json({ message: 'Review not found' });
@@ -79,7 +79,6 @@ exports.deleteReview = async (req, res, next) => {
         }
 
         const bookId = review.bookId;
-        await review.remove();
 
         // After deleting, update the book's average rating
         await updateAverageRating(bookId);
