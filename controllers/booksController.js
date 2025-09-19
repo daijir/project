@@ -62,13 +62,16 @@ exports.updateBook = async (req, res, next) => {
 // @route   DELETE /books/:id
 exports.deleteBook = async (req, res, next) => {
   try {
-    const book = await Book.findById(req.params.id);
+    // Find the book by its ID and delete it in one atomic operation
+    const book = await Book.findByIdAndDelete(req.params.id);
+
     if (!book) {
       return res.status(404).json({ message: 'Book not found' });
     }
+
     // Also delete all reviews associated with the book
     await Review.deleteMany({ bookId: req.params.id });
-    await book.remove();
+
     res.status(200).json({ message: 'Book and associated reviews deleted successfully' });
   } catch (err) {
     next(err);
