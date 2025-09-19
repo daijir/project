@@ -7,6 +7,36 @@
   "type": "commonjs",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon app.js",
+    "seed": "node scripts/seed.js",
+    "seed:destroy": "node scripts/seed.js -d"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daijir/project.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/daijir/project/issues"
+  },
+  "homepage": "https://github.com/daijir/project#readme",
+  "dependencies": {
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "express-validator": "^7.2.1",
+    "mongoose": "^8.18.1",
+    "passport": "^0.7.0",
+    "passport-google-oauth20": "^2.0.0",
+    "swagger-jsdoc": "^6.2.8",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "eslint": "^9.35.0",
+    "nodemon": "^3.1.10"
   }
 }
